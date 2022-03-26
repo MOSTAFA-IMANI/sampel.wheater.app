@@ -1,9 +1,9 @@
-package com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.viewmodel
+package com.rymon.sampelwheaterapp.features.show_weather_information.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.model.WeatherInfoShowModel
+import com.rymon.sampelwheaterapp.features.show_weather_information.model.WeatherInfoShowModel
 import javax.inject.Inject
 
 class WeatherInfoViewModelFactory @Inject constructor(private val arg: WeatherInfoShowModel,

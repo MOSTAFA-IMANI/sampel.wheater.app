@@ -21,7 +21,7 @@
         android:id="@+id/tv_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
+        style="@style/TextAppearance.AppCompat"
         android:textSize="70sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_date_time"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/degree_celsius_symbol"
-        android:textColor="@color/colorPrimary"
+        style="@style/TextAppearance.AppCompat"
         android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@id/tv_temperature"
         app:layout_constraintTop_toTopOf="@id/tv_temperature" />
@@ -40,7 +40,7 @@
         android:id="@+id/tv_city_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
+        style="@style/TextAppearance.AppCompat"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_temperature"
@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_temperature"
-        tools:src="@drawable/haze" />
+       />
 
     <TextView
         android:id="@+id/tv_weather_condition"

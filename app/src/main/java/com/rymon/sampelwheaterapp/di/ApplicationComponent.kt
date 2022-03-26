@@ -1,7 +1,7 @@
 package com.mostafaimani.weatherappmvvmdagger.di
 
 import android.app.Application
-import com.mostafaimani.weatherappmvvmdagger.common.App
+import com.rymon.sampelwheaterapp.common.App
 import com.rymon.sampelwheaterapp.features.show_weather_information.viewmodel.WeatherInfoViewModel
 import com.rymon.sampelwheaterapp.di.AppModule
 

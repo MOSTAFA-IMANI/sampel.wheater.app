@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/layout_dialog_add_city.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/layout_input_part.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/layout_sunrise_sunset.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/layout_weather_additional_info.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Mostafa/AndroidStudioProjects/sampelwheaterapp/app/src/main/res/layout/layout_weather_basic_info.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>

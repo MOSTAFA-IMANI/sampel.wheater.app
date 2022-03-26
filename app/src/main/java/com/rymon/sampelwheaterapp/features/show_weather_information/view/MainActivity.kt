@@ -1,6 +1,5 @@
 package com.rymon.sampelwheaterapp.features.show_weather_information.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -8,7 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.viewmodel.WeatherInfoViewModelFactory
+import com.rymon.sampelwheaterapp.features.show_weather_information.viewmodel.WeatherInfoViewModelFactory
 import com.rymon.sampelwheaterapp.R
 import com.rymon.sampelwheaterapp.database.WeatherInfoTableModel
 import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.WeatherData

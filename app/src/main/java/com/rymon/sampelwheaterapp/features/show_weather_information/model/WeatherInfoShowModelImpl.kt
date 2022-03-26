@@ -1,4 +1,4 @@
-package com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.model
+package com.rymon.sampelwheaterapp.features.show_weather_information.model
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -6,12 +6,11 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
 import com.mostafaimani.weatherappmvvmdagger.common.RequestCompleteListener
-import com.mostafaimani.weatherappmvvmdagger.database.WeatherDao
-import com.mostafaimani.weatherappmvvmdagger.database.WeatherInfoTableModel
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.model.data_class.City
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.model.data_class.WeatherInfoResponse
-import com.mostafaimani.weatherappmvvmdagger.network.ApiInterface
-import com.rymon.sampelwheaterapp.features.show_weather_information.model.WeatherInfoShowModel
+import com.rymon.sampelwheaterapp.database.WeatherDao
+import com.rymon.sampelwheaterapp.database.WeatherInfoTableModel
+import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.City
+import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.WeatherInfoResponse
+import com.rymon.sampelwheaterapp.network.ApiInterface
 
 import retrofit2.Call
 import retrofit2.Callback

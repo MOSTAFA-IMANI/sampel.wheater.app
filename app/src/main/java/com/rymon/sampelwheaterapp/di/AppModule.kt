@@ -2,6 +2,8 @@ package com.rymon.sampelwheaterapp.di
 
 import android.app.Application
 import android.content.Context
+import com.rymon.sampelwheaterapp.database.WeatherDao
+import com.rymon.sampelwheaterapp.database.WeatherDataBase
 import com.rymon.sampelwheaterapp.features.show_weather_information.view.MainActivity
 import com.rymon.sampelwheaterapp.network.ApiInterface
 import com.rymon.sampelwheaterapp.network.RetrofitClient
@@ -15,6 +17,7 @@ import javax.inject.Singleton
 @Module
 abstract class AppModule {
 
+
     @Binds
     abstract fun provideContext(application: Application): Context
 
@@ -26,12 +29,17 @@ abstract class AppModule {
         @Provides
         @Singleton
         @JvmStatic
-        fun provideApiService() : ApiInterface {
+        fun provideApiService(): ApiInterface {
             return RetrofitClient.client.create(ApiInterface::class.java)
         }
 
+        @Provides
+        @Singleton
+        @JvmStatic
+        fun provideWeatherDao(application: Application): WeatherDao {
+            return WeatherDataBase.getDatabase(application).WeatherDao()
 
+        }
 
     }
-
 }

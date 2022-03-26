@@ -2,8 +2,8 @@ package com.rymon.sampelwheaterapp.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.model.WeatherInfoShowModelImpl
-import com.mostafaimani.weatherappmvvmdagger.features.weather_info_show.viewmodel.WeatherInfoViewModelFactory
+import com.rymon.sampelwheaterapp.features.show_weather_information.model.WeatherInfoShowModelImpl
+import com.rymon.sampelwheaterapp.features.show_weather_information.viewmodel.WeatherInfoViewModelFactory
 import com.rymon.sampelwheaterapp.features.show_weather_information.model.WeatherInfoShowModel
 import com.rymon.sampelwheaterapp.features.show_weather_information.viewmodel.WeatherInfoViewModel
 
