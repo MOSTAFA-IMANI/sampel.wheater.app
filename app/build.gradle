@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.rymon.sampelwheaterapp"
+        minSdk 22
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "BASE_URL", "\"" + getBaseUrl() + "\""
+        buildConfigField "String", "APP_ID", "\"" + getAppId() + "\""
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    viewBinding {
+        enabled true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.30"
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    // material design
+//    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0-alpha03'
+
+    // dagger2
+    api 'com.google.dagger:dagger:2.38.1'
+    api 'com.google.dagger:dagger-android:2.35.1'
+    api 'com.google.dagger:dagger-android-support:2.27' // if you use the support libraries
+    kapt 'com.google.dagger:dagger-android-processor:2.27'
+    kapt 'com.google.dagger:dagger-compiler:2.27'
+
+    // network call related libraries
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // REST API calling library
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // JSON parsing library
+//    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') { // HTTP pretty log printing library
+//        exclude group: 'org.json', module: 'json'
+//    }
+
+    // glide image loading library
+//    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //room database
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    // optional
+    implementation "androidx.room:room-ktx:2.4.2"
+
+}
+
+
+def getBaseUrl() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String baseUrl = properties.getProperty("base_url")
+    if(baseUrl==null)
+        return null
+//        throw new GradleException("Add 'base_url' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm-dagger/blob/master/README.md")
+
+    return baseUrl
+}
+
+def getAppId() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String appId = properties.getProperty("app_id")
+    if(appId==null)
+//        throw new GradleException("Add 'app_id' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm-dagger/blob/master/README.md")
+        return null
+
+    return appId
+}
