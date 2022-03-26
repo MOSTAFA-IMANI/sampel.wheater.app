@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mostafaimani.weatherappmvvmdagger.common.RequestCompleteListener
+import com.rymon.sampelwheaterapp.database.WeatherInfoTableModel
 import com.rymon.sampelwheaterapp.utils.kelvinToCelsius
 import com.rymon.sampelwheaterapp.utils.unixTimestampToDateTimeString
 import com.rymon.sampelwheaterapp.utils.unixTimestampToTimeString
@@ -12,24 +13,25 @@ import com.rymon.sampelwheaterapp.features.show_weather_information.model.Weathe
 import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.City
 import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.WeatherData
 import com.rymon.sampelwheaterapp.features.show_weather_information.model.data_class.WeatherInfoResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class WeatherInfoViewModel @Inject constructor(
     var model: WeatherInfoShowModel,
     var application: Application
     ) : ViewModel() {
-
+    val readAllCityData : LiveData<MutableList<WeatherInfoTableModel>> = model.readAllCityData
 
     /**
-     * In our project, for sake for simplicity we used different LiveData for success and failure.
-     * But it's not the only way. We can use a wrapper data class to implement success and failure
-     * both using a single LiveData. Another good approach may be handle errors in BaseActivity.
-     * For this project our objective is only understand about MVVM. So we made it easy to understand.
+     *  We can use a wrapper data class to implement success and failure both using a single LiveData.
+     *  Another good approach may be handle errors in BaseActivity.
+     *  just for more speed i rather use this one
      */
     val cityListLiveData = MutableLiveData<MutableList<City>>()
     val cityListFailureLiveData = MutableLiveData<String>()
-//    val weatherInfoLiveData = MutableLiveData<WeatherInfoTableModel>()
-// TODO: 3/26/2022 add
+    val weatherInfoLiveData = MutableLiveData<WeatherInfoTableModel>()
     val weatherInfoFailureLiveData = MutableLiveData<String>()
     val progressBarLiveData = MutableLiveData<Boolean>()
 
@@ -38,10 +40,27 @@ class WeatherInfoViewModel @Inject constructor(
 
     }
 
+    fun readSelectedCityInfo(selectedCityName:String): LiveData<WeatherInfoTableModel>{
+
+        return model.readSelectedCityData(selectedCityName)
+
+    }
+
+    fun addCityInfo(weatherInfoTableModel: WeatherInfoTableModel){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            model.addCityInfo(weatherInfoTableModel)
+        }
+    }
+    fun updateCityInfo(weatherInfoTableModel: WeatherInfoTableModel){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            model.updateCityInfo(weatherInfoTableModel)
+        }
+    }
 
     /**We can inject the instance of Model in Constructor using dependency injection.
-     * For sake of simplicity, I am ignoring it now. So we have to pass instance of model in every
-     * methods of ViewModel. Please be noted, it's not a good approach.
+     * I know it's not a good approach.
      */
     fun getCityList() {
 
@@ -58,10 +77,8 @@ class WeatherInfoViewModel @Inject constructor(
     }
 
     /**We can inject the instance of Model in Constructor using dependency injection.
-     * For sake of simplicity, I am ignoring it now. So we have to pass instance of model in every
-     * methods of ViewModel. Pleas be noted, it's not a good approach.
+     * I know it's not a good approach.
      */
-
     fun getWeatherInfoByLatLon(selectedCityName :String,lat: Double,lon: Double) {
 
         progressBarLiveData.postValue(true) // PUSH data to LiveData object to show progress bar
@@ -83,12 +100,13 @@ class WeatherInfoViewModel @Inject constructor(
                     sunrise = data.sys.sunrise.unixTimestampToTimeString(),
                     sunset = data.sys.sunset.unixTimestampToTimeString()
                 )
+                val weatherInfoTableModel=WeatherInfoTableModel(selectedCityName,lat,lon,weatherData)
 
                 progressBarLiveData.postValue(false) // PUSH data to LiveData object to hide progress bar
 
                 // After applying business logic and data manipulation, we push data to show on UI
-                // TODO: 3/26/2022 add
-               }
+                weatherInfoLiveData.postValue(weatherInfoTableModel) // PUSH data to LiveData object
+            }
 
             override fun onRequestFailed(errorMessage: String) {
                 progressBarLiveData.postValue(false) // hide progress bar
