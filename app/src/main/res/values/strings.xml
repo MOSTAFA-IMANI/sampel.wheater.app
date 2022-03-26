@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">sampel wheater app</string>
+    <string name="app_name">Weather App </string>
+    <string name="view_weather">View Weather</string>
+    <string name="degree_celsius_symbol">°C</string>
+    <string name="description_weather_condition_icon">weather condition icon</string>
+    <string name="label_humidity">Humidity</string>
+    <string name="label_pressure">Pressure</string>
+    <string name="label_visibility">Visibility</string>
+    <string name="label_sunrise">Sunrise</string>
+    <string name="label_sunset">Sunset</string>
+    <string name="label_lat">Lat</string>
+    <string name="label_lon">Lon</string>
+    <string name="btn_add_text">ADD</string>
+    <string name="update_city">UPDATE</string>
+    <string name="empty_input_error">Must have Value</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="add_city">Add A New City</string>
 </resources>

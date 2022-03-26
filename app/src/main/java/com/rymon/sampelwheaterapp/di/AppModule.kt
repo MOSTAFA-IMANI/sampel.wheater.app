@@ -2,7 +2,7 @@ package com.rymon.sampelwheaterapp.di
 
 import android.app.Application
 import android.content.Context
-import com.rymon.sampelwheaterapp.MainActivity
+import com.rymon.sampelwheaterapp.features.show_weather_information.view.MainActivity
 import com.rymon.sampelwheaterapp.network.ApiInterface
 import com.rymon.sampelwheaterapp.network.RetrofitClient
 
